@@ -21,11 +21,17 @@ public:
     const BusesToStop GetBusesByStop(const std::string_view stop_name) const;
     svg::Document RenderMap() const;
     const std::optional<RouteStat> GetRoute(const std::string_view from, const std::string_view to) const;
+    
+    svg::Document DrawPolyline(svg::Document doc, SphereProjector sp, size_t colors_in_palete) const;
+    svg::Document DrawBusName(svg::Document doc, SphereProjector sp, size_t colors_in_palete) const;
+    geo::Coordinates GetLatAndLng(std::string_view stop) const;
 
 private:
-    int GetUniqueStopsCount(const Bus* bus) const;
+    int GetUniqueStops(const Bus* bus) const;
     double CalculateGPSLength(const Bus* bus) const;
     int CalculateRealLength(const Bus* bus) const;
+    double CalculateCurvature(double bus_route_length, double gps_length) const;
+    int CalculateStopCount(const Bus* bus) const;
 
     const tc::TransportCatalogue& transport_catalogue_;
     const MapRenderer& renderer_;

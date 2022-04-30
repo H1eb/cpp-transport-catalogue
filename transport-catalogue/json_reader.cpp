@@ -23,7 +23,7 @@ json::Array GetAnswer(std::deque<Stat> queries, RequestHandler requestHandler) {
         switch (request.type)
         {
         case RequestType::ROUTE:
-            array.push_back(std::move(GetRoute(request, requestHandler)));
+            array.push_back(std::move(GetRouteInfo(request, requestHandler)));
             break;
         case RequestType::BUS:
             array.push_back(std::move(GetBusInfo(request, requestHandler)));
@@ -101,7 +101,7 @@ json::Node GetBusInfo(const Stat& stat, const RequestHandler& rh) {
     }
 }
 
-json::Node GetRoute(const Stat& stat, const RequestHandler& rh) {
+json::Node GetRouteInfo(const Stat& stat, const RequestHandler& rh) {
 
     std::string from = stat.key_values.at("from");
     std::string to = stat.key_values.at("to");

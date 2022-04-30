@@ -27,4 +27,4 @@ json::Array GetAnswer(std::deque<Stat> queries, RequestHandler requestHandler);
 json::Node GetTransportMap(const Stat& stat, const RequestHandler& rh);
 json::Node GetBusesList(const Stat& stat, const RequestHandler& rh);
 json::Node GetBusInfo(const Stat& stat, const RequestHandler& rh);
-json::Node GetRoute(const Stat& stat, const RequestHandler& rh);
+json::Node GetRouteInfo(const Stat& stat, const RequestHandler& rh);
